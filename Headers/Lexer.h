@@ -44,8 +44,55 @@ public:
     DynamicArray<Token> tokenise();
 };
 
+inline std::ostream& operator<<(std::ostream& os, const TokenClass& type) {
+    switch (type) {
+        case TokenClass::identifier:
+            os << "identifier";
+            break;
+        case TokenClass::floatLit:
+            os << "floatlit";
+            break;
+        case TokenClass::intLit:
+            os << "intlit";
+            break;
+        case TokenClass::add:
+            os << "add";
+            break;
+        case TokenClass::subtract:
+            os << "subtract";
+            break;
+        case TokenClass::multiply:
+            os << "multiply";
+            break;
+        case TokenClass::divide:
+            os << "divide";
+            break;
+        case TokenClass::exponent:
+            os << "exponent";
+            break;
+        case TokenClass::whitespace:
+            os << "whitespace";
+        case TokenClass::lParen:
+            os << "lParen";
+            break;
+        case TokenClass::rParen:
+            os << "rParen";
+            break;
+        case TokenClass::comma:
+            os << "comma";
+            break;
+        case TokenClass::assign:
+            os << "assign";
+            break;
+        case TokenClass::eof:
+            os << "eof";
+            break;
+    }
+    return os;
+}
+
 inline std::ostream& operator<<(std::ostream& os, const Token& token) {
-    os << "(" << token.lexeme << ", " << token.lexeme << ")";
+    os << "(" << token.tokenClass << ", " << token.lexeme << ")";
     return os;
 }
 

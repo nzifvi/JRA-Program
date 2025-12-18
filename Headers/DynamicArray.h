@@ -54,9 +54,11 @@ public:
     void insert(const int index, const V value) {
         if (ptrArray == nullptr) {
             throw -1;
-        }else {
+        }else if (index < 0 || index > size) {
+            throw -2;
+        } else {
             if (size == capacity) {
-                resize(std::max(1, 4*capacity));
+                resize(std::max(1, 2*capacity));
             }
             for (int i = size; i > index; i--) {
                 ptrArray[i] = std::move(ptrArray[i - 1]);
@@ -78,8 +80,8 @@ public:
             }
 
             size--;
-            if (size > 0 && size == capacity/4) {
-                resize(capacity/4);
+            if (size > 0 && size == capacity/2) {
+                resize(capacity/2);
             }
             return temp;
         }
