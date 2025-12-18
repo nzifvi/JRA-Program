@@ -19,27 +19,52 @@ DynamicArray<Token> Lexer::tokenise() {
         }
 
         if (isdigit(input[pos]) || input[pos] == '.') {
-            //tokens.insert(tokens.getSize() - 1, " ");
+            tokens.insert(tokens.getSize(), lexNumber());
         }else if (isalpha(input[pos])) {
-            //tokens.insert(tokens.getSize() - 1, " ");
+            tokens.insert(tokens.getSize(), lexIdentifier());
         }else {
-            tokens.insert(tokens.getSize() - 1, lexOperator(pos));
+            tokens.insert(tokens.getSize(), lexOperator(pos));
             pos++;
         }
     }
     tokens.insert(
-        tokens.getSize() - 1,
+        tokens.getSize(),
         Token(TokenClass::eof, "")
         );
     return tokens;
 }
 
-Token Lexer::lexIdentifier(const int initialPos) {
+Token Lexer::lexIdentifier() {
+    const size_t startingPos = pos;
 
+    while (pos < input.length() && isalpha(input[pos])) {
+        pos++;
+    }
+
+    const std::string lexeme = input.substr(startingPos, pos - startingPos);
+    return Token(TokenClass::identifier, lexeme);
 }
 
-Token Lexer::lexNumber(const int initialPos) {
+Token Lexer::lexNumber() {
+    const size_t startingPos = pos;
+    bool hasRadix = false;
 
+    while (pos < input.length() && (isdigit(input[pos]) || input[pos] == '.')) {
+        if (input[pos] == '.') {
+            if (hasRadix) {break;}
+            hasRadix = true;
+        }
+        pos++;
+    }
+
+    const std::string lexeme = input.substr(startingPos, pos - startingPos);
+    TokenClass type;
+    if (hasRadix) {
+        type = TokenClass::floatLit;
+    }else {
+        type = TokenClass::intLit;
+    }
+    return Token(type, lexeme);
 }
 
 Token Lexer::lexOperator(const int initialPos) {

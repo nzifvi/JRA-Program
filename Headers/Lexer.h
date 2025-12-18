@@ -35,8 +35,8 @@ private:
     std::string input;
     int pos = 0;
 
-    Token lexIdentifier(const int initialPos);
-    Token lexNumber(const int initialPos);
+    Token lexIdentifier();
+    Token lexNumber();
     Token lexOperator(const int initialPos);
 public:
     Lexer(const std::string& input);
@@ -44,6 +44,10 @@ public:
     DynamicArray<Token> tokenise();
 };
 
+inline std::ostream& operator<<(std::ostream& os, const Token& token) {
+    os << "(" << token.lexeme << ", " << token.lexeme << ")";
+    return os;
+}
 
 
 #endif //LEXER_H

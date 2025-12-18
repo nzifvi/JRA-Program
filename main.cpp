@@ -1,16 +1,12 @@
 #include "Headers/DynamicArray.h"
 #include <iostream>
+#include "Headers/Lexer.h"
 
 int main() {
-    DynamicArray<int> array;
-    for (int i = 0; i < 10; i++) {
-        array.insert(0, 1);
-    }
+    const std::string func = "f(x,y) = x + y";
 
-    std::cout << array << "\n";
-
-    array.insert(1, 100);
-
-    std::cout << array << "\n";
+    Lexer lexer(func);
+    DynamicArray<Token> tokenStream = lexer.tokenise();
+    std::cout << tokenStream << std::endl;
 
 }
