@@ -7,6 +7,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include "ChainingHashMap.h"
 
 template <typename V>class DynamicArray {
 private:

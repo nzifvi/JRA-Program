@@ -1,13 +1,19 @@
 //
-// Created by benja on 18.12.2025.
+// Created by benja on 29/12/2025.
 //
 
 #ifndef COMPUTATIONALGRAPH_H
 #define COMPUTATIONALGRAPH_H
 
+#include "Graph.h"
+#include <vector>
 
+class ComputationalGraph final : public Graph {
+private:
+    void seedLocalGradients();
 
-class ComputationalGraph {
+public:
+    void executeForwardMode();
 
 };
 

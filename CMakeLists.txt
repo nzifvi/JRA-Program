@@ -16,5 +16,8 @@ add_executable(JRAProgram main.cpp
         Headers/Lexer.h
         Headers/Parser.cpp
         Headers/Parser.h
+        Headers/Graph.cpp
+        Headers/Graph.h
         Headers/ComputationalGraph.cpp
-        Headers/ComputationalGraph.h)
+        Headers/ComputationalGraph.h
+)

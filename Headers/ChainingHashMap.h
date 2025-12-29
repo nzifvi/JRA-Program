@@ -7,15 +7,28 @@
 
 #include "MapItem.h"
 #include "DynamicArray.h"
-
+/*
 template <typename K, typename V> class ChainingHashMap {
 private:
-    DynamicArray<DynamicArray<MapItem<K, V>>> hashMap;
+    DynamicArray<MapItem<K,V>>* ptrMap;
+    int mapSize;
+    int itemCount;
+    int loadFactor;
+    float maxLoadFactor = 0.75;
 
+    int hash(K key);
+    void resize(const int newMapSize);
+    DynamicArray<MapItem<K, V>>& getChainRef(const int hashedIndex);
 
 public:
+    ChainingHashMap();
+    ~ChainingHashMap();
+
+    void insert(K key, V value);
+    MapItem<K,V> get(K key);
+    DynamicArray<MapItem<K,V>> getChainCopy(const int hashedIndex);
 };
 
 
-
+*/
 #endif //CHAININGHASHMAP_H

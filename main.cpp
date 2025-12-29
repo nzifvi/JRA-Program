@@ -1,12 +1,28 @@
-#include "Headers/DynamicArray.h"
+#include "Headers/ComputationalGraph.h"
 #include <iostream>
-#include "Headers/Lexer.h"
 
 int main() {
-    const std::string func = "f(x,y) = x + 3.14*y^5^5^5";
+    Graph graph;
 
-    Lexer lexer(func);
-    DynamicArray<Token> tokenStream = lexer.tokenise();
-    std::cout << tokenStream << std::endl;
+    Vertex a("A", OpType::VARIABLE);
+    Vertex b("B", OpType::VARIABLE);
+    Vertex c("C", OpType::VARIABLE);
+    Vertex d("D", OpType::VARIABLE);
 
+    graph.addVertex(a);
+    graph.addVertex(b);
+    graph.addVertex(c);
+    graph.addVertex(d);
+
+    /*
+     * A: A -> B, A -> C
+     * B: B -> D
+     * C: C -> D
+     */
+    graph.addEdge(a, b);
+    graph.addEdge(a, c);
+    graph.addEdge(b, d);
+    graph.addEdge(c, d);
+
+    std::cout << graph;
 }

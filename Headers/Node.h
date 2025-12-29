@@ -5,6 +5,8 @@
 #ifndef NODE_H
 #define NODE_H
 
+#include <string>
+/*
 class Node {
 public:
     virtual ~Node() = default;
@@ -49,7 +51,17 @@ public:
     double evaluate() override;
 };
 
+class VariableNode final: public Node {
+private:
+    std::string varName;
+    double* ptrValue = nullptr;
 
+public:
+    VariableNode(std::string varName, double* ptrValue);
+    double evaluate() override;
 
+    std::string getVariableName();
+};
+*/
 
 #endif //NODE_H

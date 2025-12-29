@@ -15,8 +15,8 @@ private:
 
 public:
     //CONSTRUCTORS AND DESTRUCTORS:
-    MapItem(const K key, const V value): key(key), value(value) {};
-    MapItem(const K&& key, const V&& value): key(std::move(key)), value(std::move(value)) {};
+    MapItem(const K& key, const V& value): key(key), value(value) {};
+    MapItem(K&& key, V&& value): key(std::move(key)), value(std::move(value)) {};
 
     // PUBLIC NON-ENCAPSULATION FUNCTION MEMBERS:
 

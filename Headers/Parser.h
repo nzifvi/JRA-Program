@@ -4,11 +4,11 @@
 
 #ifndef PARSER_H
 #define PARSER_H
-
+/*
 #include "DynamicArray.h"
 #include "Node.h"
 #include "Lexer.h"
-#include "ComputationalGraph.h"
+#include "Graph.h"
 
 class Parser {
 private:
@@ -22,19 +22,21 @@ private:
     Node* registerNode(Node* node);
 
     // PARSE FUNCTION MEMBERS:
-    Node* parseAssignment();
-    Node* parseExpression();
+    Node* parseProgram();
+    Node* parseFunction();
+    Node* parseParams();
+
+    Node* parseExpr();
     Node* parseTerm();
     Node* parseFactor();
     Node* parsePrimary();
-    Node* parseParams();
-
+    Node* parseNumber();
 public:
-    Parser(DynamicArray<Token> tokens);
+    Parser(const DynamicArray<Token>& tokens);
 
-    ComputationalGraph* buildGraph();
+    Graph* buildGraph();
 };
-
+*/
 
 
 #endif //PARSER_H
